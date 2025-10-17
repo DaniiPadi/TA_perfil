@@ -1,0 +1,7 @@
+{
+  "name": "TA_perfil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
