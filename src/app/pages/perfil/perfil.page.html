@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="profile-container">
+    <ion-card>
+      <div class="profile-image-container">
+        <img src="https://img.freepik.com/vector-premium/ilustracion-vectorial-predeterminada-perfil-usuario_664995-334.jpg" alt="Profile Image" class="profile-image">
+      </div>
+
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Mi Perfil</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-input label="Nombre" labelPlacement="floating" placeholder="Ingrese su nombre" [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Correo electrónico" labelPlacement="floating" type="email" placeholder="correo@ejemplo.com" [(ngModel)]="correo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Contraseña" labelPlacement="floating" [type]="showPassword ? 'text' : 'password'" placeholder="********" [(ngModel)]="password"></ion-input>
+          <ion-button slot="end" fill="clear" (click)="togglePassword()">
+            <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-button expand="block" class="save-button" (click)="guardarCambios()">
+          Guardar Cambios
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
