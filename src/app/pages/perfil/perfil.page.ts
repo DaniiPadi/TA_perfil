@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardContent, IonInput, IonButton, IonCardTitle, IonItem, IonIcon, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { eyeOutline, eyeOffOutline, helpCircleOutline } from 'ionicons/icons';
+import { ModalsService } from '../../components/modals/modals.component';
 
 @Component({
   selector: 'app-perfil',
@@ -12,53 +13,20 @@ import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
   standalone: true,
   imports: [IonBackButton, IonButtons, IonIcon, IonItem, IonCardTitle, IonButton, IonInput, IonCardContent, IonCardHeader, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class PerfilPage implements OnInit {
-
+export class PerfilPage {
   showPassword = false;
   nombre = '';
   correo = '';
   password = '';
 
-  constructor() {
-    addIcons({ eyeOutline, eyeOffOutline });
+  constructor(public modalsService: ModalsService) {
+    addIcons({ eyeOutline, eyeOffOutline, helpCircleOutline });
   }
 
-  ngOnInit() {
-  }
-
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
+  togglePassword() { this.showPassword = !this.showPassword; }
 
   async guardarCambios() {
-    await this.mostrarAlerta();
-    this.limpiarCampos();
+    await this.modalsService.mostrarToastExito('Datos guardados exitosamente');
+    this.nombre = ''; this.correo = ''; this.password = ''; this.showPassword = false;
   }
-
-  async mostrarAlerta() {
-    return new Promise((resolve) => {
-      const alert = document.createElement('ion-alert');
-      alert.header = '¡Éxito!';
-      alert.message = 'Los cambios se han guardado correctamente.';
-      alert.buttons = [
-        {
-          text: 'OK',
-          handler: () => {
-            resolve(true);
-          }
-        }
-      ];
-      
-      document.body.appendChild(alert);
-      alert.present();
-    });
-  }
-
-  limpiarCampos() {
-    this.nombre = '';
-    this.correo = '';
-    this.password = '';
-    this.showPassword = false;
-  }
-
 }

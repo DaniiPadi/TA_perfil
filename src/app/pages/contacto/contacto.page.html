@@ -8,40 +8,26 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="contacto-container">
-    <ion-card>
-      <div class="profile-image-container">
-        <img src="https://img.freepik.com/vector-premium/ilustracion-vectorial-predeterminada-perfil-usuario_664995-334.jpg" alt="Daniel Padilla" class="profile-image">
-      </div>
-
-      <ion-card-header>
-        <ion-card-title class="ion-text-center">Daniel Padilla</ion-card-title>
-        <p class="ion-text-center subtitle">Apasionado por la tecnología y el diseño</p>
-      </ion-card-header>
-
-      <ion-card-content>
-        <ion-item>
-          <ion-icon name="call-outline" slot="start"></ion-icon>
-          <ion-label>0993851170</ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="mail-outline" slot="start"></ion-icon>
-          <ion-label>daniel.padilla@example.com</ion-label>
-        </ion-item>
-
-        <div class="button-group">
-          <ion-button expand="block" href="https://github.com/DaniiPadi" target="_blank">
-            <ion-icon slot="start" name="logo-github"></ion-icon>
-            Ver mi GitHub
-          </ion-button>
-
-          <ion-button expand="block" href="https://www.linkedin.com/in/danii-padilla" target="_blank">
-            <ion-icon slot="start" name="logo-linkedin"></ion-icon>
-            Ver mi LinkedIn
-          </ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </div>
+  <ion-card>
+    <div class="profile-image-container">
+      <img src="https://img.freepik.com/vector-premium/ilustracion-vectorial-predeterminada-perfil-usuario_664995-334.jpg" alt="Daniel Padilla" class="profile-image">
+    </div>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Daniel Padilla</ion-card-title>
+      <p class="ion-text-center subtitle">Apasionado por la tecnología</p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item><ion-icon name="call-outline" slot="start"></ion-icon><ion-label>0993851170</ion-label></ion-item>
+      <ion-item><ion-icon name="mail-outline" slot="start"></ion-icon><ion-label>daniel.padilla@example.com</ion-label></ion-item>
+      <ion-button expand="block" href="https://github.com/DaniiPadi" target="_blank">
+        <ion-icon slot="start" name="logo-github"></ion-icon>GitHub
+      </ion-button>
+      <ion-button expand="block" href="https://www.linkedin.com/in/danii-padilla" target="_blank">
+        <ion-icon slot="start" name="logo-linkedin"></ion-icon>LinkedIn
+      </ion-button>
+      <ion-button expand="block" (click)="eliminarPerfil()" color="danger">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>Eliminar Perfil
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

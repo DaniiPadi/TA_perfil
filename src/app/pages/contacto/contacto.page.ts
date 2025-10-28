@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonIcon, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { callOutline, mailOutline, logoGithub, logoLinkedin } from 'ionicons/icons';
+import { callOutline, mailOutline, logoGithub, logoLinkedin, trashOutline } from 'ionicons/icons';
+import { ModalsService } from '../../components/modals/modals.component';
 
 @Component({
   selector: 'app-contacto',
@@ -12,13 +13,18 @@ import { callOutline, mailOutline, logoGithub, logoLinkedin } from 'ionicons/ico
   standalone: true,
   imports: [IonLabel, IonItem, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonButton, IonIcon, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class ContactoPage implements OnInit {
-
-  constructor() {
-    addIcons({ callOutline, mailOutline, logoGithub, logoLinkedin });
+export class ContactoPage {
+  constructor(public modalsService: ModalsService) {
+    addIcons({ callOutline, mailOutline, logoGithub, logoLinkedin, trashOutline });
   }
 
-  ngOnInit() {
+  async eliminarPerfil() {
+    console.log('Botón presionado'); 
+    const confirmado = await this.modalsService.abrirModalEliminar();
+    console.log('Confirmado:', confirmado); 
+    
+    if (confirmado) {
+      await this.modalsService.mostrarToastEliminacion('Perfil eliminado correctamente');
+    }
   }
-
 }
